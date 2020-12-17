@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
     }
 });
 
-app.get("/",function(req, res)=>{
+app.post('/', async (req, res) => {
        res.send("Apis working")
 })
 
