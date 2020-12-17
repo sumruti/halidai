@@ -7,7 +7,7 @@ exports.Booking = (req, res) => {
 	 try{
 	 	   BookingModel.CreateBooking(req.body)
 	         .then((result) => {
-	            return res.send({status:result, message: 'Booking successful',order_id:result.order_id});
+	            return res.send({status:true, message: 'Booking successful',order_id:result.order_id});
 	        })
 
 	 }catch(err){
