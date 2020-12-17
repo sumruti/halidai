@@ -28,6 +28,7 @@ const Booking = mongoose.model('tbl_booking', bookingSchema);
 exports.CreateBooking = (Data) => {
      Data.createdAt =  new Date().toISOString();
      Data.order_id =  'Hal-'+Date.now();
+     console.log(Data)
      const bookingSave = new Booking(Data);
      return bookingSave.save();
 };
