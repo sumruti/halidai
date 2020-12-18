@@ -29,7 +29,8 @@ const bookingSchema = new Schema({
 
 
     order_id:{type: String}, 
-    createdAt:{type: String}
+    createdAt:{type: String},
+    status:{type: String}
 });
 
 
@@ -39,9 +40,46 @@ const Booking = mongoose.model('tbl_booking', bookingSchema);
 exports.CreateBooking = (Data) => {
      Data.createdAt =  new Date().toISOString();
      Data.order_id =  'Hal-'+Date.now();
+     Data.status =  'Pending';
      
      const bookingSave = new Booking(Data);
      return bookingSave.save();
+};
+
+
+exports.BookingUpcomingPast = (status, user_id) => {
+    return new Promise((resolve, reject) => {
+        Booking.find({
+              $and : [
+                       { 
+                         "status":status
+                       },
+                       { 
+                         "user_id":user_id
+                       }
+                     ]
+            })
+            .exec(function (err, users) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(users);
+                }
+            })
+    });
+};
+
+exports.BookingById = (booking_id) => {
+    return new Promise((resolve, reject) => {
+        Booking.find({_id:booking_id})
+            .exec(function (err, data) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(data);
+                }
+            })
+    });
 };
 
 

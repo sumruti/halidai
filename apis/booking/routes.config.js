@@ -11,6 +11,28 @@ exports.routesConfig = function (app) {
         BookingController.Booking
     ]);
 
+    app.get('/api/booking/upcoming/:userId', [
+        //ValidationMiddleware.validJWTNeeded,
+        BookingController.BookingUpcoming
+    ]);
+
+    app.get('/api/booking/past/:userId', [
+        //ValidationMiddleware.validJWTNeeded,
+        BookingController.BookingPast
+    ]);
+
+    app.get('/api/booking-by-id/:booking_id', [
+        //ValidationMiddleware.validJWTNeeded,
+        BookingController.BookingById
+    ]);
+  
+
+    app.post('/api/booking-by-id/:booking_id', [
+        //ValidationMiddleware.validJWTNeeded,
+    	CheckParam.validate_param,
+        BookingController.Booking
+    ]);
+
 
 
 

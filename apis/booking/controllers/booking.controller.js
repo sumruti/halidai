@@ -21,6 +21,60 @@ exports.Booking = (req, res) => {
 };
 
 
+exports.BookingUpcoming = (req, res) => {
+	 try{
+	 	   BookingModel.BookingUpcomingPast('Pending',req.params.userId)
+	         .then((result) => {
+	              return res.send({status:true, result:result});
+	        })
+
+	 }catch(err){
+
+	 	   return res.send({status:false, message: "Something went wrong please try again"});
+
+	 }
+
+          
+    
+};
+
+
+
+exports.BookingPast = (req, res) => {
+	 try{
+	 	   BookingModel.BookingUpcomingPast('Completed',req.params.userId)
+	         .then((result) => {
+	              return res.send({status:true, result:result});
+	        })
+
+	 }catch(err){
+
+	 	   return res.send({status:false, message: "Something went wrong please try again"});
+
+	 }
+
+          
+    
+};
+
+exports.BookingById = (req, res) => {
+	 try{
+	 	   BookingModel.BookingById(req.params.booking_id)
+	         .then((result) => {
+	              return res.send({status:true, result:result});
+	        })
+
+	 }catch(err){
+
+	 	   return res.send({status:false, message: "Something went wrong please try again"});
+
+	 }
+
+          
+    
+};
+
+
 
 
 
