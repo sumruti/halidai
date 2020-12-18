@@ -17,6 +17,17 @@ const bookingSchema = new Schema({
     pick_up_loc_long:{type: String}, 
     drop_loc_long:{type: String}, 
     deposite:{type: String}, 
+
+
+
+    check_in_date:{type: String}, 
+    check_in_time:{type: String}, 
+    rent:{type: String}, 
+    extra:{type: String}, 
+    no_of_guests:{type: String}, 
+
+
+
     order_id:{type: String}, 
     createdAt:{type: String}
 });
@@ -28,7 +39,7 @@ const Booking = mongoose.model('tbl_booking', bookingSchema);
 exports.CreateBooking = (Data) => {
      Data.createdAt =  new Date().toISOString();
      Data.order_id =  'Hal-'+Date.now();
-     console.log(Data)
+     
      const bookingSave = new Booking(Data);
      return bookingSave.save();
 };
