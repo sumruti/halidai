@@ -17,6 +17,7 @@ const bookingSchema = new Schema({
     pick_up_loc_long:{type: String}, 
     drop_loc_long:{type: String}, 
     deposite:{type: String}, 
+    booking_title:{type: String}, 
 
 
 
